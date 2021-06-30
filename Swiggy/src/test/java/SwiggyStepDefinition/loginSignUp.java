@@ -22,5 +22,11 @@ public class loginSignUp {
 	public void user_enters_data_in_fields_required_for_sign_up_and_clicks_continue() throws Throwable {
 		loginSignUp_.signUp();
 	}
+	@Then("^User logged in using Mobile Phone Number\\.$")
+	public void user_logged_in_using_Mobile_Phone_Number() throws Throwable {
+		loginSignUp_.logIn();
+		
+	}
+
 
 }

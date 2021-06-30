@@ -33,6 +33,15 @@ public class loginSignUpFunctionality {
 	@FindBy(how = How.XPATH, xpath = "/html/body/div[2]/div/div/div[2]/div/div/div/div[2]/form/div[2]/a")
 	public WebElement continueBtn;
 	
+	@FindBy(how = How.XPATH, xpath = "/html/body/div/div[1]/div[1]/div/div[1]/div[1]/div/div[1]/div/a[1]")
+	public WebElement clickLogin;
+
+	@FindBy(how = How.ID, using = "mobile")
+	public WebElement enterLoginMobileNumber;
+
+	@FindBy(how = How.XPATH, xpath = "/html/body/div[2]/div/div/div[2]/div/div/div/form/div[2]/a")
+	public WebElement clickLoginbtn;
+
 	public void launchBrowser() throws Throwable {
 		try {
 			System.setProperty("webdriver.chrome.driver",
@@ -65,6 +74,12 @@ public class loginSignUpFunctionality {
 		loginSignUp_.Email.sendKeys("042waisi@gmail.com");
 		loginSignUp_.Password.sendKeys("awias1234");
 		loginSignUp_.continueBtn.click();
+	}
+	public void logIn() {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		loginSignUp_.clickLogin.click();
+		loginSignUp_.enterLoginMobileNumber.sendKeys("03364592456");
+		loginSignUp_.clickLoginbtn.click();
 	}
 
 }

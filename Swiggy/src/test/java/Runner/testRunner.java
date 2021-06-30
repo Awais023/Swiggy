@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 features = "src/test/resources/Features"
 ,glue= {"SwiggyStepDefinition"}
-,tags= {"@UserSignUp"}
+,tags= {"@UserLogin"}
 )
 public class testRunner {
 
