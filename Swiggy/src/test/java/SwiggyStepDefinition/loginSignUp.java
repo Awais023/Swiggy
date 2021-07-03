@@ -10,6 +10,7 @@ public class loginSignUp {
 	
 	@Given("^User has launch the browser\\.$")
 	public void user_has_launch_the_browser() throws Throwable {
+		loginSignUp_.setExtent();
 		loginSignUp_.launchBrowser();		
 	}
 

@@ -12,9 +12,15 @@ public class Checkout {
 		checkout.searchLocation();
 	}
 
+	
 	@Then("^User add product to cart\\.$")
 	public void user_add_product_to_cart() throws Throwable {
 		checkout.addToCart();
+	}
+
+	@Then("^User enters data in search field to search retuarants or products\\.$")
+	public void user_enters_data_in_search_field_to_search_retuarants_or_products() throws Throwable {
+		checkout.searchRestuarants_Product();
 	}
 
 	@Then("^user completed the checkout process\\.$")
