@@ -144,6 +144,12 @@ public class checkoutProcess extends loginSignUpFunctionality {
 			checkout_.clickCheckoutSignUp.click();
 			checkout_.enterSignUpOtp.sendKeys("####");
 			checkout_.verifySignUpOtp.click();
+			
+			/*Further Procedure of Checkout page cannot be proceed as we do not have a valid mobile number on which otp can be received 
+			 * and test case can move further, we need a valid Indian mobile on which otp is being received, if you provide me this its a  
+			 *  half hr task to be finished.
+			 *  */
+			
 			test = extent.createTest("Checkout")
 					.pass(MarkupHelper.createLabel(
 							"User has been logged in and payment and address details has been entered successfully",
