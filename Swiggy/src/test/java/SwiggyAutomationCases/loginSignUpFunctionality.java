@@ -54,7 +54,13 @@ public class loginSignUpFunctionality {
 	@FindBy(how = How.XPATH, xpath = "/html/body/div[2]/div/div/div[2]/div/div/div/form/div[2]/a")
 	public WebElement clickLoginbtn;
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	String phoneNumber = "9156454646";
+	String name_ = "test";
+	String email_ = "042waisi@gmail.com";
+	String password_ = "test1234";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static ExtentSparkReporter spark;
 	public static ExtentReports extent;
 	public static ExtentTest test;
@@ -83,6 +89,7 @@ public class loginSignUpFunctionality {
 			test = extent.createTest("Launch Browser")
 					.pass(MarkupHelper.createLabel("Chrome Driver has been Launching.", ExtentColor.GREEN));
 			test.pass(MarkupHelper.createLabel("Chromer Driver has been launched Successfully.", ExtentColor.GREEN));
+			extent.flush();
 		} catch (Exception e) {
 			System.out.println(e);
 			extent.createTest("Launch Browser")
@@ -99,44 +106,65 @@ public class loginSignUpFunctionality {
 			driver.manage().window().maximize();
 			test = extent.createTest("Launch Swiggy Website")
 					.pass(MarkupHelper.createLabel("Swiggy.com has been launched.", ExtentColor.GREEN));
-			test.pass(MarkupHelper.createLabel("Swiggy.com has been launched Successfully.", ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("www.Swiggy.com has been launched Successfully.", ExtentColor.GREEN));
+			extent.flush();
 		} catch (Exception e) {
 			System.out.println(e);
-			extent.createTest("Launch Swiggy.com")
-			.fail(MarkupHelper.createLabel("Swiggy.com has not been launched Successfully.", ExtentColor.RED));
+			extent.createTest("Launch Swiggy.com").fail(
+					MarkupHelper.createLabel("www.Swiggy.com has not been launched Successfully.", ExtentColor.RED));
 			extent.flush();
 		}
 	}
 
 	public void signUp() {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		loginSignUp_.signUp_.click();
-		loginSignUp_.PhoneNumber.sendKeys("9156454646");
-		loginSignUp_.Name.sendKeys("Awais");
-		loginSignUp_.Email.sendKeys("042waisi@gmail.com");
-		loginSignUp_.Password.sendKeys("awias1234");
-		loginSignUp_.continueBtn.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		loginSignUp_.otp.sendKeys("####");
-		loginSignUp_.verifyOtp.click();
-		test = extent.createTest("Sign Up")
-				.pass(MarkupHelper.createLabel("Sign Up details has been entered.", ExtentColor.GREEN));
-		test.pass(MarkupHelper.createLabel("Sign Up details has been entered Successfully.", ExtentColor.GREEN));
-		extent.flush();
+		try {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			loginSignUp_.signUp_.click();
+			loginSignUp_.PhoneNumber.sendKeys(phoneNumber);
+			loginSignUp_.Name.sendKeys(name_);
+			loginSignUp_.Email.sendKeys(email_);
+			loginSignUp_.Password.sendKeys(password_);
+			loginSignUp_.continueBtn.click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			loginSignUp_.otp.sendKeys("####");
+			loginSignUp_.verifyOtp.click();
+			test = extent.createTest("Sign Up").pass(MarkupHelper.createLabel("User should enter sign Up Details.", ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("Phone Number :" + phoneNumber, ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("Name :" + name_, ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("Email :" + email_, ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("Sign Up details has been entered Successfully.", ExtentColor.GREEN));
+			extent.flush();
+		} catch (Exception e) {
+			System.out.println(e);
+			extent.createTest("Sign Up").fail(
+					MarkupHelper.createLabel("Sign Up details has not been entered Successfully", ExtentColor.RED));
+			extent.flush();
+		}
 	}
 
 	public void logIn() {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		loginSignUp_.clickLogin.click();
-		loginSignUp_.enterLoginMobileNumber.sendKeys("9156454646");
-		loginSignUp_.clickLoginbtn.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		loginSignUp_.otp.sendKeys("####");
-		loginSignUp_.verifyOtp.click();
-		test = extent.createTest("Log In")
-				.pass(MarkupHelper.createLabel("User has been logged in.", ExtentColor.GREEN));
-		test.pass(MarkupHelper.createLabel("User has been logged in Successfully.", ExtentColor.GREEN));
-		extent.flush();
+		try {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			loginSignUp_.clickLogin.click();
+			loginSignUp_.enterLoginMobileNumber.sendKeys(phoneNumber);
+			loginSignUp_.clickLoginbtn.click();
+			loginSignUp_.Name.sendKeys(name_);
+			loginSignUp_.Email.sendKeys(email_);
+			loginSignUp_.Password.sendKeys(password_);
+			loginSignUp_.continueBtn.click();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			loginSignUp_.otp.sendKeys("####");
+			loginSignUp_.verifyOtp.click();
+			test = extent.createTest("Log In")
+					.pass(MarkupHelper.createLabel("User has been logged in.", ExtentColor.GREEN));
+			test.pass(MarkupHelper.createLabel("User has been logged in Successfully.", ExtentColor.GREEN));
+			extent.flush();
+		} catch (Exception e) {
+			System.out.println(e);
+			extent.createTest("Log In").fail(
+					MarkupHelper.createLabel("User has not been logged in Successfully.", ExtentColor.RED));
+			extent.flush();
+		}
 	}
 
 }
