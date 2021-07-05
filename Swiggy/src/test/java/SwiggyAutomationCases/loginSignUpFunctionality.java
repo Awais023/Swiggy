@@ -82,7 +82,7 @@ public class loginSignUpFunctionality {
 	public void launchBrowser() throws Throwable {
 		try {
 			System.setProperty("webdriver.chrome.driver",
-					"C:/Users/awais.sultan/git/TPG/TpgAutomation/chromeDriver/chromedriver.exe");
+					"C:/Users/awais.sultan/git/repository/Swiggy/chromeDriver/chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			loginSignUp_ = PageFactory.initElements(driver, loginSignUpFunctionality.class);
